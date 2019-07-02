@@ -161,7 +161,9 @@ public class PreparationConversions extends BeanConversionServiceWrapper {
                 parameters.put(ImplicitParameters.FILTER.getKey(),
                         translator.toTQL(parameters.get(ImplicitParameters.FILTER.getKey())));
                 filterColumns = tqlFilterService
-                        .getFilterColumnsMetadata(parameters.get(ImplicitParameters.FILTER.getKey()), rowMetadata);
+                        .getFilterColumnsMetadata(parameters.get(ImplicitParameters.FILTER.getKey()),
+                                rowMetadata.getColumns())
+                        .collect(toList());
             }
             // add metadata of the scope column if not already added (useful when there is a column rename for
             // example)
@@ -251,9 +253,12 @@ public class PreparationConversions extends BeanConversionServiceWrapper {
                                     // Translate filter from JSON to TQL
                                     parameters.put(ImplicitParameters.FILTER.getKey(),
                                             translator.toTQL(parameters.get(ImplicitParameters.FILTER.getKey())));
-                                    filterColumns = tqlFilterService.getFilterColumnsMetadata(
-                                            parameters.get(ImplicitParameters.FILTER.getKey()),
-                                            stepRowMetadata.getRowMetadata());
+                                    filterColumns =
+                                            tqlFilterService
+                                                    .getFilterColumnsMetadata(
+                                                            parameters.get(ImplicitParameters.FILTER.getKey()),
+                                                            stepRowMetadata.getRowMetadata().getColumns())
+                                                    .collect(toList());
                                 }
                                 // add metadata of the scope column if not already added(use when there is a column
                                 // rename for example)
