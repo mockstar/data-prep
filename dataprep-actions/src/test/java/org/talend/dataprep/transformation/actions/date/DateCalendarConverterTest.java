@@ -426,9 +426,6 @@ public class DateCalendarConverterTest extends BaseDateTest {
     public void testChronologyToJulianDay(){
         testConversion(IsoStr2, CalendarUnit.ISO, pattern, JulianDay,
                 CalendarUnit.JULIAN_DAY);
-        testConversion(JapaneseStr, CalendarUnit.JAPANESE, pattern,ModifiedJulianDay ,
-                CalendarUnit.MODIFIED_JULIAN_DAY);
-
         testConversion(HijrahStr, CalendarUnit.HIJRI, pattern,EpochDay ,
                 CalendarUnit.EPOCH_DAY);
         testConversion(MinguoStr, CalendarUnit.MINGUO, pattern,RataDie ,
