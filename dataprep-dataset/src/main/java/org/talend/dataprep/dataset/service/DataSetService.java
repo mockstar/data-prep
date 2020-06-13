@@ -340,7 +340,7 @@ public class DataSetService extends BaseDataSetService {
             throw new TDPException(DataSetErrorCodes.UNABLE_TO_READ_DATASET_LOCATION, e);
         }
         DataSetMetadata dataSetMetadata = null;
-        final TDPException hypotheticalException;
+        TDPException hypotheticalException;
         try {
 
             // if the size is provided, let's check if the quota will not be exceeded

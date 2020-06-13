@@ -227,7 +227,7 @@ public class DateCalendarConverter extends AbstractActionMetadata implements Col
 
         try {
             String newValue = null;
-            if (context.get(IS_FROM_CHRONOLOGY_INTERNAL_KEY)) { //it is From Chronology
+            if ((boolean) context.get(IS_FROM_CHRONOLOGY_INTERNAL_KEY)) { //it is From Chronology
                 AbstractChronology fromCalendarTypeKey = context.get(FROM_CALENDAR_TYPE_KEY);
                 Locale fromLocaleKey = context.get(FROM_LOCALE_KEY);
                 String fromPattern = parseDateFromPatterns(originalValue, context.get(FROM_DATE_PATTERNS_KEY),
@@ -262,7 +262,7 @@ public class DateCalendarConverter extends AbstractActionMetadata implements Col
         }
         AbstractChronology fromCalendarTypeKey = context.get(FROM_CALENDAR_TYPE_KEY);
         Locale fromLocaleKey = context.get(FROM_LOCALE_KEY);
-        if (context.get(IS_TO_CHRONOLOGY_INTERNAL_KEY)) { //Chronology->Chronology
+        if ((boolean) context.get(IS_TO_CHRONOLOGY_INTERNAL_KEY)) { //Chronology->Chronology
             dateConvert = new org.talend.dataquality.converters.DateCalendarConverter(
                     fromPattern, fromPattern, fromCalendarTypeKey, context.get(TO_CALENDAR_TYPE_KEY),
                     fromLocaleKey, context.get(TO_LOCALE_KEY));
